@@ -2,6 +2,7 @@ package api.filmweb;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -17,10 +18,16 @@ public class Review implements IReview  {
 	
 	@Override
 	public Map<String, URL> getMovieTitleMap(String movieTitle) {
+		
+		if (movieTitle == null || movieTitle.isEmpty())
+		{
+			throw new RuntimeException("Brak podanego tytu�u szukanego filmu");
+		}
+		
 		Map<String,URL> dict = new Hashtable<String, URL>();
 		try {
-			 URL searchUrl = new URL(FILMWEBSEARCHURL + movieTitle.toLowerCase());
-			 Document doc = Jsoup.connect(searchUrl.toString()).get();
+			 String searchUrl = FILMWEBSEARCHURL + movieTitle.toLowerCase();
+			 Document doc = Jsoup.connect(searchUrl).get();
 			 Elements hitDescWrapperClass = doc.select("div[class=\"hitDescWrapper\"");
 			 
 			 if (hitDescWrapperClass == null) {

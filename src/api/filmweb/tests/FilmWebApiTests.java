@@ -16,5 +16,12 @@ public class FilmWebApiTests {
 		Map<String, URL> movieTitles = review.getMovieTitleMap("Terminator");
 		assertEquals(10, movieTitles.size());
 	}
+	
+	@Test
+	public void getMovieTitleMapPolishSignTests() {
+		IReview review = new Review();
+		Map<String, URL> movieTitles = review.getMovieTitleMap("było");
+		assertEquals(10, movieTitles.size());
+	}
 
 }

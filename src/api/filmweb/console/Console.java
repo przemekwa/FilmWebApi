@@ -9,6 +9,13 @@ import api.filmweb.Review;
 public class Console {
 
 	public static void main(String[] args) {
+		
+		if (args.length == 0)
+		{
+			System.out.println("Brak parametru z nazw¹ filmu.Nazwa filmu jest wymagana.");
+		    return;
+		}
+		
 		IReview review = new Review();
 		Map<String, URL> movieTitle = review.getMovieTitleMap(args[0]);
 		
