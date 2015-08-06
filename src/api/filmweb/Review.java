@@ -26,8 +26,8 @@ public class Review implements IReview  {
 		
 		Map<String,URL> dict = new Hashtable<String, URL>();
 		try {
-			 String searchUrl = FILMWEBSEARCHURL + movieTitle.toLowerCase();
-			 Document doc = Jsoup.connect(searchUrl).get();
+			 URL searchUrl = new URL(FILMWEBSEARCHURL + movieTitle.toLowerCase());
+			 Document doc = Jsoup.parse(searchUrl, 40000);
 			 Elements hitDescWrapperClass = doc.select("div[class=\"hitDescWrapper\"");
 			 
 			 if (hitDescWrapperClass == null) {
