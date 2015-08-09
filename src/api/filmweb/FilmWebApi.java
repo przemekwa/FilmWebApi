@@ -2,7 +2,6 @@ package api.filmweb;
 
 import java.io.IOException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Hashtable;
 import java.util.Map;
 

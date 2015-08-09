@@ -30,15 +30,24 @@ public class FilmWebApiTests {
 		IFilmWebApi review = new FilmWebApi();
 		try {
 			URL reviewUrl = review.getEditorReviewUrl(new URL("http://www.filmweb.pl/Matrix.Rewolucje"));
-			
 			assertEquals(new URL("http://www.filmweb.pl/reviews/%C5%9Amier%C4%87+legendy-698").getPath(), reviewUrl.getPath());
-			
 			
 		} catch (MalformedURLException e) {
 			fail();
 		}
-		
-		
+	}
+	
+	@Test
+	public void getEditorReviewNoReviewUrlTest(){
+		IFilmWebApi review = new FilmWebApi();
+		try {
+			URL reviewUrl = review.getEditorReviewUrl(new URL("http://www.filmweb.pl/film/Maska-1994-7585"));
+			assertEquals(null, reviewUrl);
+			
+		} catch (MalformedURLException e) {
+			fail();
+		}
+	
 	}
 
 }
