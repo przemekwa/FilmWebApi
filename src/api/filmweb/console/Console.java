@@ -3,8 +3,8 @@ package api.filmweb.console;
 import java.net.URL;
 import java.util.Map;
 
-import api.filmweb.IReview;
-import api.filmweb.Review;
+import api.filmweb.IFilmWebApi;
+import api.filmweb.FilmWebApi;
 
 public class Console {
 
@@ -12,12 +12,12 @@ public class Console {
 		
 		if (args.length == 0)
 		{
-			System.out.println("Brak parametru z nazw¹ filmu.Nazwa filmu jest wymagana.");
+			System.out.println("Brak parametru z nazwï¿½ filmu.Nazwa filmu jest wymagana.");
 		    return;
 		}
 		
-		IReview review = new Review();
-		Map<String, URL> movieTitle = review.getMovieTitleMap(args[0]);
+		IFilmWebApi review = new FilmWebApi();
+		Map<String, URL> movieTitle = review.getMoviesUrl(args[0]);
 		
 		for (String s: movieTitle.keySet())
 		{
